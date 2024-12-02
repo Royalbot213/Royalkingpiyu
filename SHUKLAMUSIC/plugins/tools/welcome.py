@@ -3,7 +3,7 @@ from PIL import ImageDraw, Image, ImageFont, ImageChops
 from pyrogram import *
 from pyrogram.types import *
 from logging import getLogger
-from SONALI import app
+from SHUKLAMUSIC import app
 
 LOGGER = getLogger(__name__)
 
@@ -43,12 +43,12 @@ def circle(pfp, size=(500, 500)):
     return pfp
 
 def welcomepic(pic, user, chatname, id, uname):
-    background = Image.open("SONALI/assets/Brandedwel2.png")
+    background = Image.open("SHUKLAMUSIC/assets/Brandedwel2.png")
     pfp = Image.open(pic).convert("RGBA")
     pfp = circle(pfp)
     pfp = pfp.resize((825, 824))
     draw = ImageDraw.Draw(background)
-    font = ImageFont.truetype('SONALI/assets/font.ttf', size=110)
+    font = ImageFont.truetype('SHUKLAMUSIC/assets/font.ttf', size=110)
     welcome_font = ImageFont.truetype('BrandrdXMusic/assets/font.ttf', size=60)
     draw.text((2100, 1420), f'ID: {id}', fill=(12000, 12000, 12000), font=font)
     pfp_position = (1990, 435)
@@ -72,7 +72,7 @@ async def greet_group(_, member: ChatMemberUpdated):
             user.photo.big_file_id, file_name=f"pp{user.id}.png"
         )
     except AttributeError:
-        pic = "SONALI/assets/Brandedwel2.png"
+        pic = "SHUKLAMUSIC/assets/Brandedwel2.png"
     if (temp.MELCOW).get(f"welcome-{member.chat.id}") is not None:
         try:
             await temp.MELCOW[f"welcome-{member.chat.id}"].delete()
